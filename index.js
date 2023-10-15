@@ -68,12 +68,8 @@ app.listen(port, () => {
 
 mongoose
   .connect(uri, {
-    // useNewUrlParser: true,
-    // useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
   })
   .then(() => console.log("MongoDB connection established..."))
   .catch((error) => console.error("MongoDB connection failed:", error.message));
-
-https.createServer(app).listen(8443, function (req, res) {
-  console.log("Server started at port 8443");
-});
