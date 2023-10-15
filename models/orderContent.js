@@ -23,6 +23,7 @@ const orderContent = mongoose.Schema({
   Deadline: { type: String, required: true },
   type: { type: String, required: true },
   Price: { type: String, required: true },
+  Translator_name: { type: String, required: true },
   Additional_explanation: { type: String, required: false },
 });
 

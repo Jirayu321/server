@@ -11,7 +11,6 @@ router.post("/", async (req, res) => {
   const schema = Joi.object({
     // Date: Joi.string().required(),
     // Customer_name: Joi.string().required(),
-    // Translator_name: Joi.string().required(),
     // Job_description: Joi.string().allow(""),
     // Customers_will_get: Joi.string().allow(""),
     // Deadline: Joi.string().allow(""),
@@ -21,8 +20,9 @@ router.post("/", async (req, res) => {
     // Status: Joi.string().allow(""),
     // Send_to: Joi.string().allow(""),
     // Review: Joi.string().allow(""),
-
+    
     orderNumber: Joi.string().required(),
+    Translator_name: Joi.string().required(),
     file: Joi.string().required(),
     document_Type: Joi.string().required(),
     translation_Type: Joi.string().required(),
@@ -49,6 +49,7 @@ router.post("/", async (req, res) => {
       Additional_explanation,
       type,
       Price,
+      Translator_name
     } = await req.body;
 
     const order = await new Order({
@@ -62,6 +63,7 @@ router.post("/", async (req, res) => {
       Additional_explanation,
       type,
       Price,
+      Translator_name
     });
 
     await order.save();
