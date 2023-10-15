@@ -39,20 +39,8 @@ router.post("/", async (req, res) => {
     const { error } = await schema.validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
     // let user = await User.findOne({ name: req.body.Customer_name });
-    const {
-      orderNumber,
-      file,
-      document_Type,
-      translation_Type,
-      tranfrom,
-      tranto,
-      Deadline,
-      Additional_explanation,
-      type,
-      Price,
-      Translator_name,
-      data,
-    } = await req.body;
+    console.log("req.body:", req.body);
+    const { orderNumber, data } = await req.body;
 
     const x = {
       orderNumber,
