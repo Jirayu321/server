@@ -15,16 +15,17 @@ const orderContent = mongoose.Schema({
   // Review: { type: String, required: false },
 
   orderNumber: { type: String, required: true },
-  file: { type: String, required: true },
-  document_Type: { type: String, required: true },
-  translation_Type: { type: String, required: true },
-  tranfrom: { type: String, required: true },
-  tranto: { type: String, required: true },
-  Deadline: { type: String, required: true },
-  type: { type: String, required: true },
   Price: { type: String, required: true },
-  Translator_name: { type: String, required: true },
-  Additional_explanation: { type: String, required: false },
+  data: { type: Array, required: true },
+  // file: { type: String, required: false },
+  // document_Type: { type: String, required: false },
+  // translation_Type: { type: String, required: false },
+  // tranfrom: { type: String, required: false },
+  // tranto: { type: String, required: false },
+  // Deadline: { type: String, required: false },
+  // type: { type: String, required: false },
+  // Translator_name: { type: String, required: false },
+  // Additional_explanation: { type: String, required: false },
 });
 
 export default mongoose.model("Order", orderContent);

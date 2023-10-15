@@ -32,24 +32,19 @@ router.post("/", async (req, res) => {
     Additional_explanation: Joi.string().allow(""),
     type: Joi.string().required(),
     Price: Joi.string().required(),
-    data: Joi.array().allow(),
+    data: Joi.array(),
   });
 
   try {
     const { error } = await schema.validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
     // let user = await User.findOne({ name: req.body.Customer_name });
-    console.log("req.body:", req.body);
-    const { orderNumber, data } = await req.body;
-
-    const x = {
-      orderNumber,
-      ...Object.fromEntries(data.map((prop) => [prop, null])),
-    };
-
+    const { orderNumber, Price, data } = await req.body;
     const order = await new Order({
-      x,
-    });
+      orderNumber,
+      Price,
+      data,
+    }).save();
 
     await order.save();
     await res.status(200).json();
