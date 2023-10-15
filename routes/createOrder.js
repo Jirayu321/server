@@ -39,33 +39,29 @@ router.post("/", async (req, res) => {
     if (error) return res.status(400).send(error.details[0].message);
     // let user = await User.findOne({ name: req.body.Customer_name });
     const {
-      Date,
-      Translator_name,
-      Customer_name,
-      Job_description,
-      Customers_will_get,
+      orderNumber,
+      file,
+      document_Type,
+      translation_Type,
+      tranfrom,
+      tranto,
       Deadline,
-      Number_of_edits,
+      Additional_explanation,
+      type,
       Price,
-      Status,
-      Send_to,
-      Review,
-      Order_type,
     } = await req.body;
 
     const order = await new Order({
-      Date,
-      Translator_name,
-      Customer_name,
-      Job_description,
-      Customers_will_get,
+      orderNumber,
+      file,
+      document_Type,
+      translation_Type,
+      tranfrom,
+      tranto,
       Deadline,
-      Number_of_edits,
+      Additional_explanation,
+      type,
       Price,
-      Status,
-      Send_to,
-      Review,
-      Order_type,
     });
 
     await order.save();
