@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
     // Status: Joi.string().allow(""),
     // Send_to: Joi.string().allow(""),
     // Review: Joi.string().allow(""),
-    
+
     orderNumber: Joi.string().required(),
     Translator_name: Joi.string().required(),
     file: Joi.string().required(),
@@ -32,6 +32,7 @@ router.post("/", async (req, res) => {
     Additional_explanation: Joi.string().allow(""),
     type: Joi.string().required(),
     Price: Joi.string().required(),
+    data: Joi.array().allow(),
   });
 
   try {
@@ -49,21 +50,17 @@ router.post("/", async (req, res) => {
       Additional_explanation,
       type,
       Price,
-      Translator_name
+      Translator_name,
+      data,
     } = await req.body;
 
-    const order = await new Order({
+    const x = {
       orderNumber,
-      file,
-      document_Type,
-      translation_Type,
-      tranfrom,
-      tranto,
-      Deadline,
-      Additional_explanation,
-      type,
-      Price,
-      Translator_name
+      ...Object.fromEntries(data.map((prop) => [prop, null])),
+    };
+
+    const order = await new Order({
+      x,
     });
 
     await order.save();
