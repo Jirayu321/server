@@ -1,13 +1,15 @@
 import express from "express";
 import Joi from "joi";
 // import bcrypt from "bcrypt";
+import multer from "multer";
 import Order from "../models/orderContent.js";
 
 // import generateAuthToken from "../utils/generateAuthToken.js";
 
 const router = express.Router();
+const upload = multer({ dest: "uploads/" });
 
-router.post("/", async (req, res) => {
+router.post("/", upload.array("files"), async (req, res) => {
   const schema = Joi.object({
     // Date: Joi.string().required(),
     // Customer_name: Joi.string().required(),
@@ -23,7 +25,6 @@ router.post("/", async (req, res) => {
 
     orderNumber: Joi.string().required(),
     Translator_name: Joi.string().required(),
-    file: Joi.string().required(),
     document_Type: Joi.string().required(),
     translation_Type: Joi.string().required(),
     tranfrom: Joi.string().required(),
@@ -32,6 +33,7 @@ router.post("/", async (req, res) => {
     Additional_explanation: Joi.string().allow(""),
     type: Joi.string().required(),
     Price: Joi.string().required(),
+    file: Joi.string().required(),
     data: Joi.array(),
   });
 

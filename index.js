@@ -5,8 +5,8 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import morgan from "morgan";
 
-import fs from "fs";
-import https from "https";
+// import fs from "fs";
+// import https from "https";
 
 // import resgister from "./routes/register.js";
 // import login from "./routes/login.js";
@@ -29,15 +29,14 @@ const app = express();
 // };
 
 app.use(morgan("dev"));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "32mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "32mb", extended: true }));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
   res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
   // if (req.method === "OPTIONS") {
