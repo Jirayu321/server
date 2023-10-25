@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
-    console.log("req.query", req?.query);
+    // console.log("req.query", req?.query);
     if (
       req.query.Customer_name !== null &&
       req.query.Customer_name !== undefined
@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
       });
       await res.status(200).json(data);
     } else {
-      console.log("Translator_name");
+      // console.log("Translator_name");
       const data = await Order.find({
         Translator_name: req.query.Translator_name,
       });

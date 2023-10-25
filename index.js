@@ -14,6 +14,7 @@ import createOrder from "./routes/createOrder.js";
 // import updateOrder from "./routes/updateOrder.js";
 import getOrder from "./routes/gatOrder.js";
 // import getUsers from "./routes/getUsers.js"
+import generationsAi from "./routes/generationsAI.js";
 
 const uri = "mongodb+srv://Ozone:Jirayu30052@cluster0.ots5oju.mongodb.net/test";
 const port = 3001;
@@ -57,6 +58,7 @@ app.get("/:universalURL", (req, res) => {
 // app.use("/api/login", login);
 // app.use("/api/register", resgister);
 app.use("/api/createOrder", createOrder);
+app.use("/api/generationsAi", generationsAi);
 app.use("/api/getOrder", getOrder);
 // app.use("/api/updateOrder", updateOrder);
 // app.use("/api/getUsers", getUsers);
