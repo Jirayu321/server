@@ -8,12 +8,12 @@ import morgan from "morgan";
 // import fs from "fs";
 // import https from "https";
 
-// import resgister from "./routes/register.js";
-// import login from "./routes/login.js";
+import resgister from "./routes/register.js";
+import login from "./routes/login.js";
 import createOrder from "./routes/createOrder.js";
 // import updateOrder from "./routes/updateOrder.js";
 import getOrder from "./routes/gatOrder.js";
-// import getUsers from "./routes/getUsers.js"
+import getEmail from "./routes/getEmail.js";
 import generationsAi from "./routes/generationsAI.js";
 
 const uri = "mongodb+srv://Ozone:Jirayu30052@cluster0.ots5oju.mongodb.net/test";
@@ -55,13 +55,13 @@ app.get("/:universalURL", (req, res) => {
   res.send("404 URL NOT FOUND");
 });
 
-// app.use("/api/login", login);
-// app.use("/api/register", resgister);
+app.use("/api/login", login);
+app.use("/api/register", resgister);
 app.use("/api/createOrder", createOrder);
 app.use("/api/generationsAi", generationsAi);
 app.use("/api/getOrder", getOrder);
 // app.use("/api/updateOrder", updateOrder);
-// app.use("/api/getUsers", getUsers);
+app.use("/api/getEmail", getEmail);
 
 app.listen(port, () => {
   console.log(`Server running on port: ${port}...`);

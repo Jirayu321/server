@@ -1,4 +1,4 @@
-import express from 'express';
+import express from "express";
 import Joi from "joi";
 import bcrypt from "bcrypt";
 import User from "../models/userContenet.js";
@@ -13,11 +13,15 @@ router.post("/", async (req, res) => {
     password: Joi.string().min(6).required(),
     confirmPassword: Joi.string().min(6).required(),
     mobilePhone: Joi.string().max(10).required(),
+    imgProfile: Joi.string().allow(""),
+    companyName: Joi.string().allow(""),
+    juristicPersonNumber: Joi.string().allow(""),
+    website: Joi.string().allow(""),
     address: Joi.string().allow(""),
     district: Joi.string().allow(""),
     province: Joi.string().allow(""),
     country: Joi.string().allow(""),
-    postalCode: Joi.string(),
+    postalCode: Joi.string().allow(""),
     bankname: Joi.string().allow(""),
     branchname: Joi.string().allow(""),
     accountname: Joi.string().allow(""),
@@ -46,6 +50,10 @@ router.post("/", async (req, res) => {
       password,
       confirmPassword,
       mobilePhone,
+      imgProfile,
+      companyName,
+      juristicPersonNumber,
+      website,
       address,
       district,
       province,
@@ -72,8 +80,10 @@ router.post("/", async (req, res) => {
       password,
       confirmPassword,
       mobilePhone,
-
-      // imageURLs,
+      imgProfile,
+      companyName,
+      juristicPersonNumber,
+      website,
       address,
       district,
       province,
