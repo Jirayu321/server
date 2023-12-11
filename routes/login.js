@@ -9,7 +9,7 @@ const router = express.Router();
 router.post("/", async (req, res) => {
   const schema = Joi.object({
     email: Joi.string().min(3).max(200).required().email(),
-    password: Joi.string().min(6).max(200).required(),
+    password: Joi.string().max(200).required(),
   });
 
   try {

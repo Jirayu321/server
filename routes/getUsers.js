@@ -1,5 +1,5 @@
 import express from "express";
-import Joi from "joi";
+// import Joi from "joi";
 // import bcrypt from "bcrypt";
 import userContenet from "../models/userContenet.js";
 
@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
-    const dbConnect = await userContenet.find({});
+    const dbConnect = await userContenet.find().lean();
     await res.status(200).json(dbConnect);
   } catch (error) {
     res.status(404).json({ message: error.message });
