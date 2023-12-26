@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 
 const orderContent = mongoose.Schema({
   // Date: { type: String, required: true },
-  // Translator_name: { type: String, required: true },
   // Customer_name: { type: String, required: true },
   // Job_description: { type: String, required: false },
   // Customers_will_get: { type: String, required: false },
@@ -13,8 +12,8 @@ const orderContent = mongoose.Schema({
   // Status: { type: String, required: false },
   // Send_to: { type: String, required: false },
   // Review: { type: String, required: false },
-
   orderNumber: { type: String, required: true },
+  Translator_name: { type: String, required: true },
   Price: { type: String, required: true },
   data: { type: Array, required: true },
   // file: { type: String, required: false },

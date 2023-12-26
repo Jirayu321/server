@@ -41,10 +41,11 @@ router.post("/", upload.array("files"), async (req, res) => {
     const { error } = await schema.validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
     // let user = await User.findOne({ name: req.body.Customer_name });
-    const { orderNumber, Price, data } = await req.body;
+    const { orderNumber, Price, data, Translator_name } = await req.body;
     const order = await new Order({
       orderNumber,
       Price,
+      Translator_name,
       data,
     }).save();
 
