@@ -19,6 +19,8 @@ router.post("/", async (req, res) => {
 
     if (user) {
       return res.status(200).send("User already exists...");
+    }else{
+      return res.status(300).send("User");
     }
   } catch (error) {
     res.status(404).json({ message: error.message });
