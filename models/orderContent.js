@@ -15,6 +15,7 @@ const orderContent = mongoose.Schema({
   orderNumber: { type: String, required: true },
   Translator_name: { type: String, required: true },
   Price: { type: String, required: true },
+  Status: { type: String, required: true },
   data: { type: Array, required: true },
   // file: { type: String, required: false },
   // document_Type: { type: String, required: false },

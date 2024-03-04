@@ -15,6 +15,7 @@ import login from "./routes/login.js";
 import createOrder from "./routes/createOrder.js";
 // import updateOrder from "./routes/updateOrder.js";
 import getOrder from "./routes/gatOrder.js";
+import updateOrdertype from "./routes/updateOrdertype.js";
 import getUsers from "./routes/getUsers.js";
 import getEmail from "./routes/getEmail.js";
 import generationsAi from "./routes/generationsAI.js";
@@ -66,8 +67,9 @@ app.use("/api/register", resgister);
 app.use("/api/createOrder", createOrder);
 app.use("/api/generationsAi", generationsAi);
 app.use("/api/getOrder", getOrder);
+app.use("/api/updateOrdertype", updateOrdertype);
+
 app.use("/api/getUsers", getUsers);
-// app.use("/api/updateOrder", updateOrder);
 app.use("/api/getEmail", getEmail);
 
 app.listen(port, () => {

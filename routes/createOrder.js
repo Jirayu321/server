@@ -24,6 +24,7 @@ router.post("/", upload.array("files"), async (req, res) => {
     // Review: Joi.string().allow(""),
 
     orderNumber: Joi.string().required(),
+    Status: Joi.string().required(),
     Translator_name: Joi.string().required(),
     document_Type: Joi.string().required(),
     translation_Type: Joi.string().required(),
@@ -41,10 +42,12 @@ router.post("/", upload.array("files"), async (req, res) => {
     const { error } = await schema.validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
     // let user = await User.findOne({ name: req.body.Customer_name });
-    const { orderNumber, Price, data, Translator_name } = await req.body;
+    const { orderNumber, Price, data, Translator_name,Status } =
+      await req.body;
     const order = await new Order({
       orderNumber,
       Price,
+      Status,
       Translator_name,
       data,
     }).save();
